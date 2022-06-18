@@ -6,7 +6,7 @@ export default function Settings({navigation}) {
     <View>
       <Text>Settings</Text>
 
-      <Button title='Go first page' onPress={() => navigation.popToTop()} />
+      {/* <Button title='Go first page' onPress={() => navigation.popToTop()} /> */}
       {/* <Button title='Go back' onPress={() => navigation.goBack()} /> */}
     </View>
   )
