@@ -7,9 +7,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       {/* <LoginForm /> */}
-      <Greet name="Alex" />
-      <Greet name="Jess" />
-      <Greet />
+      <Greet name="alex" lastName="Hernandez" />
     </View>
   );
 }
