@@ -1,20 +1,15 @@
 import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
-//components
-// import LoginForm from './src/components/LoginForm';
-import Greet from './src/components/Greet';
+//navigation
+import NavigationStack from './src/routes/NavigationStack';
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        {/* <LoginForm /> */}
-        <Greet name="Alex" lastName="Hernandez" />
-      </View>
+     <NavigationStack />
     </NavigationContainer>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -23,3 +18,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
