@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
 //components
 // import LoginForm from './src/components/LoginForm';
 import Greet from './src/components/Greet';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <LoginForm /> */}
-      <Greet name="alex" lastName="Hernandez" />
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+        {/* <LoginForm /> */}
+        <Greet name="Alex" lastName="Hernandez" />
+      </View>
+    </NavigationContainer>
   );
 }
 
