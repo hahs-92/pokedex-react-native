@@ -1,7 +1,9 @@
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { useState, useEffect } from 'react';
 //api
 import { getPokemons, getPokemonDetail } from '../../api/pokemon';
+//components
+import PokemonList from '../../components/PokemonList';
 //navigation nos lo provee stack-navigator
 export default function Home({navigation}) {
   const [pokemons, setPokemons] = useState([])
@@ -33,14 +35,9 @@ export default function Home({navigation}) {
     getFetch()
   },[])
 
-  console.log("----------------------------------------")
-  console.log("data: ", pokemons)
-  console.log("length: ", pokemons.length)
-
   return (
-    <View >
-      <Text>Hi there!</Text>
-
+    <View style={ styles.home } >
+      <PokemonList pokemons={pokemons}/>
       {/* <Button title='Go to Settings' onPress={() => navigation.push('Settings')} /> */}
       {/* <Button title='Go to Settings' onPress={() => navigation.navigate('Settings')} /> */}
     </View>
@@ -50,8 +47,9 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
   home: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    backgroundColor: '#ffff',
+    marginTop: 10
+  }
 });

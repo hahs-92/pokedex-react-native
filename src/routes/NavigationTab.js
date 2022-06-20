@@ -15,7 +15,7 @@ const Tab = createBottomTabNavigator();
 // screenOptions={{ headerShown: false }}
 export default function NavigationTab() {
   return (
-   <Tab.Navigator initialRouteName='Home' >
+   <Tab.Navigator initialRouteName='Home'  screenOptions={{ headerShown: false }} >
         <Tab.Screen
           name="Fav"
           component={Favorite}
