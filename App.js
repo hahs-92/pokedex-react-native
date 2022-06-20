@@ -8,8 +8,8 @@ export default function App() {
   return (
     <NavigationContainer>
      {/* <NavigationStack /> */}
-     {/* <NavigationTab /> */}
-     <NavigationDrawer />
+     <NavigationTab />
+     {/* <NavigationDrawer /> */}
     </NavigationContainer>
   );
 }
