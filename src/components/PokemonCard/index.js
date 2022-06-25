@@ -1,9 +1,10 @@
 import { View,Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
 //UTILS
 import { getColorByPokemonType } from '../../utils/getColorType'
 
 export default function PokemonCard({ pokemon }) {
+    const navigation = useNavigation()
 
     const typeContainerBg = {
         ...styles.typeContainer,
@@ -11,9 +12,8 @@ export default function PokemonCard({ pokemon }) {
     }
 
     const goToPokemon = () => {
-        console.log("gg")
+        navigation.navigate("Pokemon", { id: pokemon.id })
     }
-
 
     return (
         <TouchableWithoutFeedback onPress={goToPokemon}>

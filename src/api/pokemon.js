@@ -26,3 +26,16 @@ export const getPokemonDetail = async (url) => {
         throw error
     }
 }
+
+export const getPokemonDetailById = async(idPokemon) => {
+    try {
+        const url = `${URl_BASE}/pokemon/${idPokemon}`
+        const response = await fetch(url)
+        const result = await response.json()
+
+        return result
+
+    } catch (error) {
+        throw error
+    }
+}
