@@ -49,10 +49,7 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   home: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ffff',
-    marginTop: 10
+    marginTop: 10,
+    backgroundColor: '#ffff'
   }
 });

@@ -1,21 +1,20 @@
+//ESTA NAV ES LA QUE SE ESTA UTILIZANDO¡
+
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons'
 //navigations
 import PokedexNavigation from './PokedexNavigation'
-import FavoriteNavigation from './FavoriteNavigation'
-import SettingNavigation from './SettingNavigation'
 //screens
-import Home from '../screens/Home';
 import Favorite from '../screens/Favotire';
 import Settings from '../screens/Settings';
-import Pokemon from '../screens/Pokemon';
+
 
 const Tab = createBottomTabNavigator();
 // screenOptions={{ headerShown: false }}
 export default function NavigationTab() {
   return (
-   <Tab.Navigator initialRouteName='Home'  screenOptions={{ headerShown: false }} >
+   <Tab.Navigator  initialRouteName='Home'  screenOptions={{ headerShown: false }} >
         <Tab.Screen
           name="Fav"
           component={Favorite}
