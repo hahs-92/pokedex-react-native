@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { getPokemonDetailById } from '../../api/pokemon'
 //components
 import HeaderPokemon from '../../components/HeaderPokemon'
+import TypePokemon from '../../components/TypePokemon'
 
 export default function Pokemon({route, navigation }) {
     const [pokemon, setPokemon ] = useState(null)
@@ -30,6 +31,7 @@ export default function Pokemon({route, navigation }) {
             image={pokemon?.sprites.other['official-artwork'].front_default}
             type={ pokemon?.types[0].type.name }
         />
+        <TypePokemon types={pokemon?.types } />
        </ScrollView>
     )
 
