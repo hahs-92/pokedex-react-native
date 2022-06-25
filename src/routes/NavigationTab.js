@@ -3,11 +3,12 @@
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { FontAwesome } from '@expo/vector-icons';
 //navigations
 import PokedexNavigation from './PokedexNavigation'
 //screens
 import Favorite from '../screens/Favotire';
-import Settings from '../screens/Settings';
+import Account from '../screens/Account';
 
 
 const Tab = createBottomTabNavigator();
@@ -34,12 +35,12 @@ export default function NavigationTab() {
           }}
         />
         <Tab.Screen
-          name="Settings"
-          component={Settings}
+          name="Account"
+          component={Account}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({color, size}) => (
-              <Ionicons name='settings' color={color} size={ size} />
+              <FontAwesome name='user' color={color} size={ size} />
             )
           }}
         />

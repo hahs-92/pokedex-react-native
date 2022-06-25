@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //screens
-import Settings from '../screens/Settings'
+import Account from '../screens/Account'
 
 const Stack = createNativeStackNavigator();
 
@@ -8,8 +8,8 @@ export default function SettingNavigation() {
   return (
     <Stack.Navigator >
         <Stack.Screen
-            name='Settings'
-            component={Settings}
+            name='Account'
+            component={Account}
             options={{  headerTitle:'Ajustes',  }}
         />
     </Stack.Navigator>
