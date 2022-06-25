@@ -1,5 +1,6 @@
 import { StyleSheet, ScrollView } from 'react-native'
 import { useState, useEffect } from 'react'
+import { AntDesign } from '@expo/vector-icons'
 //api
 import { getPokemonDetailById } from '../../api/pokemon'
 //components
@@ -19,6 +20,20 @@ export default function Pokemon({route, navigation }) {
             navigation.goBack()
         }
     }
+
+    useEffect(() => {
+        navigation?.setOptions({
+            headerRight: () => null,
+            headerLeft: () => (
+                <AntDesign
+                    name="leftcircleo"
+                    size={30}
+                    color="#fff"
+                    onPress={navigation.goBack}
+                />
+            )
+        })
+    }, [route.params, navigation])
 
     useEffect(() => {
         getPokemon()
