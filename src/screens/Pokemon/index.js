@@ -5,6 +5,7 @@ import { getPokemonDetailById } from '../../api/pokemon'
 //components
 import HeaderPokemon from '../../components/HeaderPokemon'
 import TypePokemon from '../../components/TypePokemon'
+import Stats from '../../components/Stats'
 
 export default function Pokemon({route, navigation }) {
     const [pokemon, setPokemon ] = useState(null)
@@ -32,6 +33,7 @@ export default function Pokemon({route, navigation }) {
             type={ pokemon?.types[0].type.name }
         />
         <TypePokemon types={pokemon?.types } />
+        <Stats  stats={ pokemon?.stats } type={ pokemon?.types[0].type.name } />
        </ScrollView>
     )
 
