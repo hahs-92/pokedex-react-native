@@ -1,9 +1,9 @@
 const URl_BASE = 'https://pokeapi.co/api/v2/'
 
-export const getPokemons = async (limit=20, offset=0) => {
+export const getPokemons = async (endPoint) => {
     try {
-        const url = `${URl_BASE}/pokemon?limit=${limit}&offset=${offset}`
-        const response = await fetch(url)
+        const url = `${URl_BASE}/pokemon?limit=20&offset=0}`
+        const response = await fetch(endPoint || url)
         const result = await response.json()
         return result
     } catch (error) {

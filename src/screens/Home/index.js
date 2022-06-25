@@ -7,13 +7,16 @@ import PokemonList from '../../components/PokemonList';
 //navigation nos lo provee stack-navigator
 export default function Home({navigation}) {
   const [pokemons, setPokemons] = useState([])
+  const [nextUrl, setNextUrl] = useState(null)
 
   const getFetch = async() => {
     try {
-      const response = await getPokemons()
+      const response = await getPokemons(nextUrl)
       const result = await response.results
       const promises = await result.map(async(r) => getPokemonDetail(r.url))
       const pokes = await Promise.all(promises)
+
+      setNextUrl(response?.next)
       setPokemons([...pokemons, ...pokes])
 
       // getPokemons()
@@ -37,7 +40,7 @@ export default function Home({navigation}) {
 
   return (
     <View style={ styles.home } >
-      <PokemonList pokemons={pokemons}/>
+      <PokemonList pokemons={pokemons} loadPokemons={ getFetch } isNext={ nextUrl }/>
       {/* <Button title='Go to Settings' onPress={() => navigation.push('Settings')} /> */}
       {/* <Button title='Go to Settings' onPress={() => navigation.navigate('Settings')} /> */}
     </View>

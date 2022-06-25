@@ -1,4 +1,5 @@
 import { View,Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 //UTILS
 import { getColorByPokemonType } from '../../utils/getColorType'
 
@@ -9,11 +10,11 @@ export default function PokemonCard({ pokemon }) {
         backgroundColor: getColorByPokemonType(pokemon?.type)
     }
 
-
-
     const goToPokemon = () => {
         console.log("gg")
     }
+
+
     return (
         <TouchableWithoutFeedback onPress={goToPokemon}>
             <View style={styles.container }>
@@ -23,7 +24,7 @@ export default function PokemonCard({ pokemon }) {
                 <View style={ styles.infoContainer }>
                     <Text style={ styles.order }>N.°{`${ pokemon.order }`.padStart(3,0)}</Text>
                     <Text style={ styles.name }>{pokemon.name}</Text>
-                    <View style={ typeContainerBg }>
+                    <View style={ typeContainerBg } >
                         <Text style={ styles.type }>{pokemon.type}</Text>
                     </View>
                 </View>
