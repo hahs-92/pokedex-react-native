@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 
 export default function CustomButton({ title, handleOnPress}) {
-    console.log("cb: " , handleOnPress)
+
     return (
         <View style={ styles.buttonContainer }>
             <TouchableOpacity

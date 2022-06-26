@@ -35,8 +35,6 @@ export default function LoginForm() {
             login(userDetails)
         }
     })
-    console.log("auth: ", auth)
-    console.log("error: ", error)
 
     return(
         <View style={ styles.loginForm }>
