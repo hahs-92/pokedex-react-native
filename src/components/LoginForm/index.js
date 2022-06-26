@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import { StyleSheet ,Text, TextInput, Button, View } from 'react-native'
 import { useFormik } from 'formik'
 import * as yup from 'yup';
+//dummy db
+import { user, userDetails  } from '../../utils/userDb'
+//hooks
+import { useAuth } from  '../../hooks/useAuth'
 
 export default function LoginForm() {
+    const [ error, setError ] = useState(null)
+
+    const { auth, login  } = useAuth()
+
     const formik = useFormik({
         initialValues: { username: "", password: ""},
         validationSchema: yup.object({
@@ -11,9 +19,19 @@ export default function LoginForm() {
             password: yup.string().required("Este campo es obligatorio")
         }),
         //validateOnChange: false, // no evalue los campos en tiempo real
-        onSubmit: (formValues) => console.log("enviado")
-    })
+        onSubmit: (formValues) => {
+            const { username, password } = formValues
 
+            if(username !== user.username || password !== user.password) {
+                setError("El usuario o la contraseña son incorrectos")
+                return
+
+            }
+            setError(null)
+            login(userDetails)
+        }
+    })
+    console.log(auth)
     return(
         <View style={ styles.loginForm }>
             <Text style={ styles.title }>Log In</Text>
@@ -37,7 +55,7 @@ export default function LoginForm() {
                 title="Send"
                 onPress={formik.handleSubmit}
             />
-
+            { error && <Text style={ styles.error }>{ error }</Text>}
 
         </View>
     )
@@ -66,5 +84,11 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         color: "red",
         fontSize: 12
+    },
+    error: {
+        padding: 40,
+        color: "red",
+        fontSize: 16,
+        textAlign: "center"
     }
 })

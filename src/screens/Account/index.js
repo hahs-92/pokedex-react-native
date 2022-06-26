@@ -2,9 +2,11 @@ import { View, Text, Button, StyleSheet } from 'react-native'
 //component
 import LoginForm from '../../components/LoginForm'
 import UserData from '../../components/UserData'
+//hooks
+import { useAuth } from '../../hooks/useAuth'
 
 export default function Account({navigation}) {
-  const auth = null
+  const { auth } = useAuth()
   return (
     <View style={ styles.account }>
       {
