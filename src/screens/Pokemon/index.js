@@ -3,13 +3,17 @@ import { useState, useEffect } from 'react'
 import { AntDesign } from '@expo/vector-icons'
 //api
 import { getPokemonDetailById } from '../../api/pokemon'
+//hooks
+import { useAuth  } from '../../hooks/useAuth'
 //components
 import HeaderPokemon from '../../components/HeaderPokemon'
 import TypePokemon from '../../components/TypePokemon'
 import Stats from '../../components/Stats'
+import FavoriteIcon from '../../components/FavoriteIcon'
 
 export default function Pokemon({route, navigation }) {
     const [pokemon, setPokemon ] = useState(null)
+    const { auth } = useAuth()
 
     const getPokemon = async() => {
         try {
@@ -23,7 +27,7 @@ export default function Pokemon({route, navigation }) {
 
     useEffect(() => {
         navigation?.setOptions({
-            headerRight: () => null,
+            headerRight: () => auth && <FavoriteIcon pokemonId={pokemon?.id } />,
             headerLeft: () => (
                 <AntDesign
                     name="leftcircleo"
@@ -33,7 +37,7 @@ export default function Pokemon({route, navigation }) {
                 />
             )
         })
-    }, [route.params, navigation])
+    }, [route.params, navigation, pokemon, auth])
 
     useEffect(() => {
         getPokemon()
