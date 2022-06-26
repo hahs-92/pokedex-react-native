@@ -6,6 +6,9 @@ import * as yup from 'yup';
 import { user, userDetails  } from '../../utils/userDb'
 //hooks
 import { useAuth } from  '../../hooks/useAuth'
+//components
+import CustomButton from "../CustomButton";
+
 
 export default function LoginForm() {
     const [ error, setError ] = useState(null)
@@ -20,18 +23,21 @@ export default function LoginForm() {
         }),
         //validateOnChange: false, // no evalue los campos en tiempo real
         onSubmit: (formValues) => {
+            console.log("si")
             const { username, password } = formValues
 
             if(username !== user.username || password !== user.password) {
                 setError("El usuario o la contraseña son incorrectos")
-                return
+                return false
 
             }
             setError(null)
             login(userDetails)
         }
     })
-    console.log(auth)
+    console.log("auth: ", auth)
+    console.log("error: ", error)
+
     return(
         <View style={ styles.loginForm }>
             <Text style={ styles.title }>Log In</Text>
@@ -51,9 +57,13 @@ export default function LoginForm() {
                 onChangeText={(text) => formik.setFieldValue('password', text) }
             />
             { formik.errors.password && <Text style={ styles.alert }>{ formik.errors.password }</Text> }
-            <Button
+            {/* <Button
                 title="Send"
                 onPress={formik.handleSubmit}
+            /> */}
+            <CustomButton
+                title="Send"
+                handleOnPress={formik.handleSubmit}
             />
             { error && <Text style={ styles.error }>{ error }</Text>}
 
