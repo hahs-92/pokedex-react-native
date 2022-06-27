@@ -1,11 +1,19 @@
 import { AntDesign } from '@expo/vector-icons';
+//utlis
+import { addPokemonFavorite, getPokemonFavorite } from '../../api/favorite';
 
 export default function FavoriteIcon({ pokemonId }) {
-    const addFavorite = () => {
-        console.log("add: ", pokemonId)
+    const addFavorite = async () => {
+        await addPokemonFavorite(pokemonId)
     }
+
+    const getFavorite = async() => {
+        const response = await getPokemonFavorite()
+        console.log(response)
+    }
+
     return (
-       <AntDesign
+        <AntDesign
             name='hearto'
             color="#fff"
             size={30}

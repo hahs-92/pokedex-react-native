@@ -26,6 +26,10 @@ export default function Pokemon({route, navigation }) {
     }
 
     useEffect(() => {
+        getPokemon()
+    },[route.params])
+
+    useEffect(() => {
         navigation?.setOptions({
             headerRight: () => auth && <FavoriteIcon pokemonId={pokemon?.id } />,
             headerLeft: () => (
@@ -38,10 +42,6 @@ export default function Pokemon({route, navigation }) {
             )
         })
     }, [route.params, navigation, pokemon, auth])
-
-    useEffect(() => {
-        getPokemon()
-    },[route.params])
 
     return (
        <ScrollView style={styles.container}>
