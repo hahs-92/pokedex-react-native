@@ -9,6 +9,7 @@ export default function Favorite() {
     const getFavorites = async () => {
         try {
             const response = await getPokemonFavorite()
+            console.log(response)
             setFavorites(response)
         } catch (error) {
             console.log(error)
@@ -17,9 +18,8 @@ export default function Favorite() {
 
     useEffect(() => {
         getFavorites()
-    },[])
+    },[favorites.length])
 
-    console.log(favorites)
     return (
         <View>
         <Text>Favorite!</Text>

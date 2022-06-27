@@ -3,7 +3,7 @@ import React from 'react'
 //utils
 import { getColorByPokemonType } from '../../utils/getColorType'
 
-export default function HeaderPokemon({name, order, image, type}) {
+export default function HeaderPokemon({name, id, image, type}) {
 
     const bgStyles = {
         ...styles.bg,
@@ -17,7 +17,7 @@ export default function HeaderPokemon({name, order, image, type}) {
             <SafeAreaView style={styles.content}>
                 <View style={styles.header}>
                     <Text style={styles.name}>{name}</Text>
-                    <Text style={styles.order}>#{`${order}`.padStart(3, 0)}</Text>
+                    <Text style={styles.order}>#{`${id}`.padStart(3, 0)}</Text>
                 </View>
                 <View style={styles.contentImg}>
                     <Image source={{ uri: image }} style={styles.image} />

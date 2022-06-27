@@ -22,7 +22,7 @@ export default function PokemonCard({ pokemon }) {
                     <Image source={{uri: pokemon.image }} style={ styles.image } />
                 </View>
                 <View style={ styles.infoContainer }>
-                    <Text style={ styles.order }>N.°{`${ pokemon.order }`.padStart(3,0)}</Text>
+                    <Text style={ styles.order }>N.°{`${ pokemon?.id }`.padStart(3,0)}</Text>
                     <Text style={ styles.name }>{pokemon.name}</Text>
                     <View style={ typeContainerBg } >
                         <Text style={ styles.type }>{pokemon.type}</Text>
