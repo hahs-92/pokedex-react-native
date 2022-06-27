@@ -6,8 +6,8 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 import { FontAwesome } from '@expo/vector-icons';
 //navigations
 import PokedexNavigation from './PokedexNavigation'
+import FavoriteNavigation from './FavoriteNavigation';
 //screens
-import Favorite from '../screens/Favotire';
 import Account from '../screens/Account';
 
 
@@ -18,7 +18,7 @@ export default function NavigationTab() {
    <Tab.Navigator  initialRouteName='Home'  screenOptions={{ headerShown: false }} >
         <Tab.Screen
           name="Fav"
-          component={Favorite}
+          component={FavoriteNavigation}
           options={{
             tabBarLabel: '',
             tabBarIcon: ({color, size}) => (

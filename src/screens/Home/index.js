@@ -18,17 +18,6 @@ export default function Home({navigation}) {
 
       setNextUrl(response?.next)
       setPokemons([...pokemons, ...pokes])
-
-      // getPokemons()
-      // .then(response => response.results)
-      // .then(pokemon => pokemon.map(poke => getPokemonDetail(poke.url)))
-      // .then(promises => Promise.all(promises))
-      // .then(data =>{
-      //   // setPokemons( [...data])
-      //   setPokemons([...pokemons, [...data]])
-      // })
-      // .catch(console.error)
-
     } catch (error) {
       console.log("error: ", error)
     }
@@ -49,7 +38,7 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
   home: {
-    marginTop: 10,
+    marginTop: 20,
     backgroundColor: '#ffff'
   }
 });

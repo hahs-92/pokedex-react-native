@@ -2,10 +2,10 @@ import { FlatList, View, StyleSheet, ActivityIndicator, Platform } from 'react-n
 //components
 import PokemonCard from '../PokemonCard'
 
-export default function PokemonList({pokemons, loadPokemons, isNext}) {
+export default function PokemonList({pokemons, loadPokemons, isNext = false}) {
 
     const loadMorePokes = () => {
-        loadPokemons()
+        loadPokemons && loadPokemons()
     }
     return (
         <View style={styles.list}>
