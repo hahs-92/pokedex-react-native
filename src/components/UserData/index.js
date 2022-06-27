@@ -1,4 +1,8 @@
 import { View, Text, StyleSheet } from 'react-native'
+import { useCallback, useState } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+//api
+import { getPokemonFavorite } from '../../api/favorite'
 //hooks
 import { useAuth } from '../../hooks/useAuth'
 //components
@@ -7,6 +11,22 @@ import CustomButton from '../CustomButton'
 
 export default function UserData() {
     const { auth, logout } = useAuth()
+    const [ total, setTotal ] = useState(0)
+
+    const getPokemons = async() => {
+        try {
+            const pokemons = await getPokemonFavorite()
+            setTotal(pokemons.length)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useFocusEffect(
+        useCallback(() => {
+            getPokemons()
+        },[])
+    )
 
     return (
         <View style={ styles.container }>
@@ -20,7 +40,7 @@ export default function UserData() {
                 <ItemMenu title=" Name: " text={ `${ auth.firtsName } ${ auth.lastName }`} />
                 <ItemMenu title=" Username: " text={ auth.username } />
                 <ItemMenu title=" Email: " text={ auth.email } />
-                <ItemMenu title=" Favorites " text={ `${ 0 } pokemons` } />
+                <ItemMenu title=" Favorites " text={ `${ total } pokemons` } />
             </View>
             <CustomButton title="Log out" handleOnPress={logout} />
         </View>

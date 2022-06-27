@@ -8,6 +8,7 @@ import { getPokemonDetailById } from '../../api/pokemon'
 import { useAuth } from '../../hooks/useAuth'
 //components
 import PokemonList from '../../components/PokemonList'
+import NoLogged from '../../components/NoLogged'
 
 export default function Favorite() {
     const [ pokemons, setPokemons ] = useState([])
@@ -48,10 +49,11 @@ export default function Favorite() {
 
     return (
        <View style={ styles.container }>
+        {  !auth &&  <NoLogged /> }
         {
-            auth
+            auth && pokemons.length > 0
                 ? <PokemonList pokemons={ pokemons} />
-                : <Text>no estas logeado</Text>
+                : <Text style={ styles.title }>Add some pokemon¡</Text>
         }
        </View>
     )
@@ -61,6 +63,12 @@ const styles = StyleSheet.create({
     container: {
         marginTop: 20,
         padding: 10,
+        height: "100%",
         backgroundColor: "#fff"
+    },
+    title: {
+        marginTop: 40,
+        textAlign: "center",
+        fontSize:20
     }
 })
